@@ -1,0 +1,27 @@
+{
+    "name": "employeetracker",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node connection.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/robynp108/EmployeeTracker.git"
+    },
+
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/robynp108/EmployeeTracker/issues"
+    },
+    "license": "ISC",
+    "dependencies": {
+        "inquirer": "^7.1.0",
+        "mysql": "^2.16.0",
+        "password": "Momomo9!"
+    }
+}
