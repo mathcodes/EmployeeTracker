@@ -1,5 +1,3 @@
-const connection = require("./connection");
-
 // Query for employee table
 const viewAllEmployeesQuery = `
     SELECT employee.id, employee.first_name, employee.last_name, role.title AS role, role.salary, department.name AS department, CONCAT(manager.first_name, " ", manager.last_name) AS manager
@@ -26,7 +24,7 @@ const viewAllRolesQuery = `
 `
 
 // Query for viewing department table
-const viewAllDepartmentsQuery =`
+const viewAllDepartmentsQuery = `
     SELECT * FROM department
 `
 
@@ -136,7 +134,7 @@ function viewAllRoles() {
 
 // Query to add a role
 function addRole(title, salary, department_id) {
-    return connection.query("INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)", [title, salary, department_id]); 
+    return connection.query("INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)", [title, salary, department_id]);
 }
 
 // Function to get an array of all deparments

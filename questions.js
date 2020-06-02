@@ -1,5 +1,20 @@
 var mysql = require("mysql");
 var inquirer = require('inquirer');
+var main = require("main.js")
+
+// var connection = mysql.createConnection({
+//     host: "localhost",
+
+//     // Your port; if not 3306
+//     port: 3306,
+
+//     // Your username
+//     user: "root",
+
+//     // Your password
+//     password: "Momomo9!",
+//     database: "employee_DB"
+// });
 
 connection.connect(function(err) {
     if (err) throw err;
@@ -49,6 +64,18 @@ function runSearch() {
 
                 case "Remove Department":
                     removeDept();
+                    break;
+
+                case "Add Roles":
+                    addRole();
+                    break;
+
+                case "View all Roles":
+                    viewAllRoles();
+                    break;
+
+                case "Update Employee Role":
+                    updateEmployeeRole();
                     break;
 
                 case "Add Roles":
