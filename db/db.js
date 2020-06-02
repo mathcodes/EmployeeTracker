@@ -1,13 +1,13 @@
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-    host: 'local host',
-    user: 'root',
-    password: '',
-    database: 'chat'
-});
+// var mysql = require('mysql');
+// var connection = mysql.createConnection({
+//     host: 'local host',
+//     user: 'root',
+//     password: '',
+//     database: 'chat'
+// });
 
-connection.connect(function(err) {
-    if (err) throw err;
-});
+// connection.connect(function(err) {
+//     if (err) throw err;
+// });
 
-module.exports = connection;
+// module.exports = connection;

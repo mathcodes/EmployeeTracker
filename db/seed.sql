@@ -13,13 +13,9 @@ VALUES
 
 INSERT INTO role (title, salary, department_id)
 VALUES
-    ("Sales Lead", 60000, 1),
     ("Salesperson", 45000, 1),
     ("Lead Engineer", 80000, 2),
     ("Software Engineer", 70000, 2),
-    ("Account Manager", 85000, 3),
-    ("Accountant", 70000, 3),
-    ("Legal Team Lead", 80000, 4),
     ("Lawyer", 90000, 4);
 
 INSERT INTO department (name)

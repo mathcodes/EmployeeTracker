@@ -1,5 +1,7 @@
 var mysql = require("mysql");
 var inquirer = require('inquirer');
+const connection = require("./db/connection");
+
 
 // var connection = mysql.createConnection({
 //     host: "localhost",
@@ -89,46 +91,35 @@ function runSearch() {
 function addEmployee() {
 
     inquirer.prompt([{
-            name: "first_name",
-            type: "input",
-            message: "What is the new first name?"
-        },
-        {
-            name: "last_name",
-            type: "input",
-            message: "What is the new last name?"
-        },
-        {
-            name: "role_id",
-            type: "input",
-            message: "What is the role id? (1,2,3,4)",
-            choices: [1, 2, 3, 4]
-        },
-        {
-            name: "manager_id",
-            type: "rawlist",
-            message: "What is the manager id number?",
-            choices: [1, 0]
-        }
-    ]).then(function(answer) {
-        console.log(answer);
-        connection.query(
-            "INSERT INTO employee SET ?", {
-                first_name: answer.first_name,
-                last_name: answer.last_name,
-                role_id: answer.role_id,
-                manager_id: answer.manager_id
-
+                name: "first_name",
+                type: "input",
+                message: "What is the new first name?"
             },
-            function(err) {
-                if (err) throw err;
-                console.log("Employee Added!")
-                runSearch();
+            {
+                name: "last_name",
+                type: "input",
+                message: "What is the new last name?"
+            },
+            {
+                name: "role_id",
+                type: "input",
+                message: "What is the role id? (1,2,3,4)",
+                choices: [1, 2, 3, 4]
+            },
+            {
+                name: "manager_id",
+                type: "rawlist",
+                message: "What is the manager id number?",
+                choices: [1, 0]
             }
-        )
+        ],
 
-    })
-
+        function(err) {
+            if (err) throw err;
+            console.log("Employee Added!")
+            runSearch();
+        }
+    )
 }
 
 
@@ -204,6 +195,7 @@ function addRole() {
         inquirer
             .prompt([{
                     type: "input",
+
                     name: "title",
                     message: "What role would you like to add?"
                 },
@@ -236,7 +228,7 @@ function addRole() {
 }
 
 function viewAllRoles() {
-    connection.query("SELECT roles.*, department.name FROM roles LEFT JOIN department ON department.id = roles.department_id",
+    connection.query("SELECT roles * , department.name FROM roles LEFT JOIN department ON department.id = roles.department_id",
         function(err, res) {
             if (err) throw err;
             console.table(res);

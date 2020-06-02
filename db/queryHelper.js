@@ -90,6 +90,17 @@ function addEmployee(first_name, last_name, role_id, manager_id) {
     return connection.query("INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)", [first_name, last_name, role_id, manager_id]);
 }
 
+// .then(function(answer) {
+//             console.log(answer);
+//             connection.query(
+//                     "INSERT INTO employee SET ?", {
+//                         first_name: answer.first_name,
+//                         last_name: answer.last_name,
+//                         role_id: answer.role_id,
+//                         manager_id: answer.manager_id
+
+//                     },
+
 // Function to get all names of employees
 async function getAllEmployeeNames() {
     try {
@@ -158,6 +169,7 @@ function getDepartmentByName(name) {
 
 // Query for removing a role
 function removeRole(title) {
+
     return connection.query("DELETE FROM role WHERE title = ?", [title]);
 }
 
@@ -175,6 +187,7 @@ function addDepartment(name) {
 function removeDepartment(name) {
     return connection.query("DELETE FROM department WHERE name = ?", [name]);
 }
+
 
 module.exports = {
     viewAllEmployees,

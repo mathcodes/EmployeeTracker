@@ -5,8 +5,8 @@ const util = require("util");
 const connection = mysql.createConnection({
     host: "localhost",
 
-    // Your port; if not 3306
-    port: 3306,
+    // Your port; if not 8000
+    port: 8000,
 
     // Your username
     user: "jonchr",
@@ -19,7 +19,7 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
     if (err) throw err;
     console.log("connected as id " + connection.threadId);
-    readconnection();
+    readConnection();
 });
 
 connection.query = util.promisify(connection.query);

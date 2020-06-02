@@ -22,3 +22,4 @@ CREATE TABLE department (
     name VARCHAR(30) NOT NULL
 );
 
+SELECT * FROM employee, role, department

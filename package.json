@@ -11,10 +11,17 @@
         "type": "git",
         "url": "git+https://github.com/robynp108/EmployeeTracker.git"
     },
-    "keywords": ["jon", "christie", "employee", "tracker", "mysql"],
+    "keywords": [
+        "jon",
+        "christie",
+        "employee",
+        "tracker",
+        "mysql"
+    ],
     "author": "Jon Christie",
     "license": "ISC",
     "dependencies": {
+        "console.table": "^0.10.0",
         "inquirer": "^7.1.0",
         "mysql": "^2.16.0",
         "password": "Momomo9!"
