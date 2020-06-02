@@ -1,5 +1,6 @@
-const queryHelper = require("./db/queryHelper");
 const questions = require("./questions");
+
+const queryHelper = require("./db/queryHelper");
 
 async function main() {
     try {

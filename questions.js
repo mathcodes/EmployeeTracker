@@ -1,6 +1,5 @@
 var mysql = require("mysql");
 var inquirer = require('inquirer');
-var main = require("main.js")
 
 // var connection = mysql.createConnection({
 //     host: "localhost",
@@ -12,16 +11,18 @@ var main = require("main.js")
 //     user: "root",
 
 //     // Your password
-//     password: "Momomo9!",
+//     password: "",
 //     database: "employee_DB"
 // });
 
-connection.connect(function(err) {
-    if (err) throw err;
-    console.log('connected as id' + connection.threadId + '\n');
-    //start();
-    runSearch();
-});
+// connection.connect(function(err) {
+//     if (err) throw err;
+//     console.log('connected as id' + connection.threadId + '\n');
+//     //start();
+//     runSearch();
+// });
+
+runSearch();
 
 function runSearch() {
     inquirer
@@ -64,18 +65,6 @@ function runSearch() {
 
                 case "Remove Department":
                     removeDept();
-                    break;
-
-                case "Add Roles":
-                    addRole();
-                    break;
-
-                case "View all Roles":
-                    viewAllRoles();
-                    break;
-
-                case "Update Employee Role":
-                    updateEmployeeRole();
                     break;
 
                 case "Add Roles":
