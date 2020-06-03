@@ -169,8 +169,8 @@ async function handleUpdate(choice) {
             // get departments here
             var departments = await queryHelper.getDepartment();
             var answer = await questions.whichDepartment(departments, "delete");
-            var indDep = await queryHelper.getIndDepartment(answer);
-            await queryHelper.deleteDepartment(indDep);
+            var answerDept = await queryHelper.getIndDepartment(answer);
+            await queryHelper.deleteDepartment(answerDept);
             console.log(`Deleted!`);
             mainMenu();
             break;
@@ -178,8 +178,8 @@ async function handleUpdate(choice) {
             // get roles here
             var roles = await queryHelper.getRoles();
             var answer = await questions.whichRole(roles, "delete");
-            var indRole = await queryHelper.getIndRole(answer);
-            await queryHelper.deleteRole(indRole);
+            var title = await queryHelper.getIndRole(answer);
+            await queryHelper.deleteRole(title);
             console.log(`Deleted!`);
             mainMenu();
             break;

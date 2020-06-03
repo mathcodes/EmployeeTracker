@@ -20,11 +20,12 @@ function getIndEmployee(answer) {
 }
 
 function getIndDepartment(name) {
-    return connection.query("SELECT * FROM department WHERE ?", { name: name.choice });
+    return connection.query("SELECT * FROM department WHERE name=?", { name: name.choice });
 }
 
 function getIndRole(name) {
     return connection.query("SELECT * FROM role WHERE ?", { title: name.choice });
+
 }
 
 function getEmployeeAndRole(answer) {
@@ -100,18 +101,19 @@ function updateRole(indEmployee, indRole) {
     ])
 }
 
-function deleteDepartment(department) {
-    return connection.query("DELETE FROM department WHERE ?", { id: department[0].id });
+function deleteDepartment(answerDept) {
+    return connection.query("DELETE FROM department WHERE ?", { name: answerDept.name });
 }
 
-function deleteRole(input) {
-    return connection.query("DELETE FROM role WHERE ?", { id: input[0].id });
+function deleteRole(title) {
+    return connection.query("DELETE FROM role WHERE ?", { title: title[0].id });
 }
 
 function deleteEmployee(input) {
     return connection.query("DELETE FROM employee WHERE ?", { id: input[0].id });
-}
 
+}
+console.log(id);
 module.exports = {
     getEverything,
     getEmployees,
