@@ -32,9 +32,8 @@ function getEmployeeAndRole(answer) {
 }
 
 function getRoles() {
-    return connection.query("SELECT title, salary FROM role");
+    return connection.query("SELECT * FROM role");
 }
-
 // function getManagers() {
 //     return connection.query("SELECT * FROM employee WHERE manager_id != ' '");
 // }
@@ -65,12 +64,18 @@ function addRole(answer, department) {
     }]);
 }
 
-function addEmployee(answer) {
+
+// pass the parameters for ALL separate inquirer responses
+function addEmployee(answer, role, manager) {
+    // get id out of user's inquirer response
+    var roleId = role.choice.split("-")[0];
+    var managerId = manager.choice.split("-")[0];
     return connection.query("INSERT INTO employee SET ?", {
         first_name: answer.first_name,
         last_name: answer.last_name,
-        roleTitle: answer.roleTitle,
-        managerChoice: answer.managerChoice
+        //the key names must match the column names in the schema
+        role_id: roleId,
+        manager_id: managerId
     });
 }
 

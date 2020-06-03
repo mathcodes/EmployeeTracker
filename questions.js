@@ -45,8 +45,6 @@ function addRoleQuestions() {
 
 
 function addEmployeeQuestions() {
-    var names = employees.map(item => item.first_name + " " + item.last_name);
-    var names2 = employees.map(item => { if (item.manager_id !== null) { return item.first_name + " " + item.last_name } });
     return inquirer.prompt([{
             type: "input",
             message: "Enter the first name of the employee:",
@@ -56,17 +54,6 @@ function addEmployeeQuestions() {
             type: "input",
             message: "Enter the last name of the employee:",
             name: "last_name"
-        }, {
-            type: "list",
-            name: "role_id",
-            message: "Choose a role for this employee.",
-            choices: names
-        },
-        {
-            type: "list",
-            name: "manager_id",
-            message: "Which manager would you like to assign to this employee?",
-            choices: names2
         }
     ])
 }
@@ -114,7 +101,7 @@ function updateMenu() {
 }
 
 function whichRole(roles, action) {
-    var names = roles.map(item => item.department_id);
+    var names = roles.map(item => item.id + "-" + item.title);
     return inquirer.prompt([{
         type: "list",
         name: "choice",
@@ -124,7 +111,7 @@ function whichRole(roles, action) {
 }
 
 function whichManager(employees, action) {
-    var names = employees.map(item => { if (item.manager_id !== null) { return item.first_name + " " + item.last_name } });
+    var names = employees.map(item => item.id + '-' + item.first_name + " " + item.last_name);
     return inquirer.prompt([{
         type: "list",
         name: "choice",
@@ -132,6 +119,8 @@ function whichManager(employees, action) {
         choices: names
     }])
 }
+
+
 
 
 

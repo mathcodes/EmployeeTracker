@@ -99,12 +99,22 @@ async function handleAdd(choice) {
             console.log("Role added!");
             mainMenu();
             break;
-        case "Add employee": // done
+        case "Add employee":
             var answer = await questions.addEmployeeQuestions();
-            await queryHelper.addEmployee(answer);
+            // get all roles from mysql
+            var roles = await queryHelper.getRoles();
+            // ask the user which role
+            var role = await questions.whichRole(roles, "associate with this employee");
+            // get all employees from mysql
+            var managers = await queryHelper.getEmployees();
+            // ask the user which employee is the manager for the new employee
+            var manager = await questions.whichManager(managers, "associate with this employee");
+            await queryHelper.addEmployee(answer, role, manager);
             console.log("Employee added!");
             mainMenu();
             break;
+
+
         case "Add department": // done
             var answer = await questions.addDepartmentQuestions();
             await queryHelper.addDepartment(answer);
