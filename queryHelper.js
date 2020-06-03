@@ -28,7 +28,7 @@ function getIndRole(name) {
 }
 
 function getEmployeeAndRole(answer) {
-    return connection.query("SELECT first_name, last_name, title FROM employee LEFT JOIN role ON employee.role_id = role.role_id WHERE first_name = ? AND last_name = ?", [answer[0].first_name, answer[0].last_name]);
+    return connection.query("SELECT first_name, last_name, title FROM employee LEFT JOIN role ON employee.role_id = role.id WHERE first_name = ? AND last_name = ?", [answer[0].first_name, answer[0].last_name]);
 }
 
 function getRoles() {
@@ -47,7 +47,7 @@ function getDepartment() {
 }
 
 function getTotalBudget() {
-    return connection.query("SELECT salary, department_id, title, SUM(salary) FROM role, employee, department GROUP BY department_id;")
+    return connection.query("SELECT department.id, department.name, SUM(role.salary) AS budget FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id GROUP BY department.id")
 }
 
 // CREATE
@@ -89,14 +89,15 @@ function updateManager(emp, manager) {
     ]);
 }
 
-function updateRole(emp, answer) {
+function updateRole(indEmployee, indRole) {
     return connection.query("UPDATE employee SET ? WHERE ?", [{
-            role_id: answer[0].role_id
+            first_name: indEmployee[0]
         },
         {
-            id: emp[0].id
-        }
-    ]);
+            last_name: indEmployee[1]
+        },
+        { role_id: indRole[0] }
+    ])
 }
 
 function deleteDepartment(department) {

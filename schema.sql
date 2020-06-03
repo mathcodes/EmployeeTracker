@@ -6,11 +6,11 @@ CREATE TABLE employee (
     id INT PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
-    role_id INT NULL,
+    role_id INT NOT NULL,
     manager_id INT NULL
 );
--- list of roles when adding 
--- list of managers (employees) add id but use split
+
+
 if not primary id, give user choices using same technique
 
 CREATE TABLE role (
