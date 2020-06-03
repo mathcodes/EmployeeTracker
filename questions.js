@@ -4,7 +4,7 @@ function mainMenu() {
     return inquirer.prompt([{
         type: "list",
         name: "choice",
-        message: "What would action would you like to take?",
+        message: "What action would you like to take?",
         choices: ["Add",
             "View",
             "Update/Delete",
@@ -34,33 +34,17 @@ function addRoleQuestions() {
             name: "title"
         },
         {
-            type: "input",
+            type: "number",
             message: "Enter the salary of the role:",
-            name: "salary",
-
-            validate: function(input) {
-                // Declare function as asynchronous, and save the done callback
-                var done = this.async();
-
-                // Do async stuff
-                setTimeout(function() {
-                    if (typeof input !== 'number') {
-                        // Pass the return value in the done callback
-                        done('You need to provide a number');
-                        return;
-                    }
-                    // Pass the return value in the done callback
-                    done(null, true);
-                }, 500);
-            },
+            name: "salary"
         },
         {
-            type: "input",
+            type: "number",
             message: "Enter the role ID:",
             name: "role_id"
         },
         {
-            type: "input",
+            type: "number",
             message: "Enter the department ID:",
             name: "department_id"
         }
@@ -134,7 +118,7 @@ function updateMenu() {
 }
 
 function whichRole(roles, action) {
-    var names = roles.map(item => item.title);
+    var names = roles.map(item => item.department_id);
     return inquirer.prompt([{
         type: "list",
         name: "choice",

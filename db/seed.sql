@@ -1,28 +1,3 @@
-DROP DATABASE IF EXISTS employees_db;
-CREATE DATABASE employees_db;
-USE employees_db;
-
-CREATE TABLE employee (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    first_name VARCHAR(30) NOT NULL,
-    last_name VARCHAR(30) NOT NULL,
-    role_id INT NULL,
-    manager_id INT NULL
-);
-
-CREATE TABLE role (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(30) NOT NULL,
-    salary DECIMAL(12,2),
-    department_id INT
-);
-
-CREATE TABLE department (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(30)
-);
-
-
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ("Jon", "Christie", 2, 3);
 
@@ -67,7 +42,3 @@ VALUES ("Multimedia Producer", 65000, 4);
 
 INSERT INTO role (title, salary, department_id)
 VALUES ("3D Modeling Designer", 120000, 5);
-
-SELECT salary, department_id, title, SUM(salary)
-FROM role, employee, department           
-GROUP BY department_id;

@@ -74,7 +74,6 @@ function addEmployee(answer) {
     });
 }
 
-// DELETE/UPDATE
 function updateManager(emp, manager) {
     return connection.query("UPDATE employee SET ? WHERE ?", [{
             manager_id: manager[0].manager_id
