@@ -2,7 +2,7 @@ var connection = require("./connection");
 
 // READ
 function getEverything() {
-    return connection.query("SELECT * FROM employee, role, department");
+    return connection.query("SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) as manager FROM employee LEFT JOIN role ON employee.role_id=role.id LEFT JOIN department ON role.department_id=department.id LEFT JOIN employee manager ON employee.manager_id=manager.id");
 }
 
 function getEmployees() {
@@ -35,9 +35,9 @@ function getRoles() {
     return connection.query("SELECT title, salary FROM role");
 }
 
-function getManagers() {
-    return connection.query("SELECT * FROM employee WHERE manager_id != ' '");
-}
+// function getManagers() {
+//     return connection.query("SELECT * FROM employee WHERE manager_id != ' '");
+// }
 
 function getManagerId(manager) {
     return connection.query("SELECT * FROM employee WHERE ?", { manager_id: manager.manager_id })
@@ -56,12 +56,12 @@ function addDepartment(answer) {
     return connection.query("INSERT INTO department SET ?", { name: answer.name });
 }
 
-function addRole(answer) {
+function addRole(answer, department) {
+    var id = department.choice.split("-")[0];
     return connection.query("INSERT INTO role SET ?", [{
         title: answer.title,
         salary: answer.salary,
-        role_id: answer.role_id,
-        department_id: answer.department_id
+        department_id: id
     }]);
 }
 
@@ -69,8 +69,8 @@ function addEmployee(answer) {
     return connection.query("INSERT INTO employee SET ?", {
         first_name: answer.first_name,
         last_name: answer.last_name,
-        role_id: answer.role_id,
-        manager_id: answer.manager_id
+        roleTitle: answer.roleTitle,
+        managerChoice: answer.managerChoice
     });
 }
 
@@ -111,8 +111,6 @@ module.exports = {
     getEmployees,
     getRoles,
     getDepartment,
-    getManagers,
-    getTotalBudget,
     getTotalBudget,
     addDepartment,
     addRole,

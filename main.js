@@ -93,7 +93,9 @@ async function handleAdd(choice) {
     switch (choice) {
         case "Add role": // done
             var answer = await questions.addRoleQuestions();
-            await queryHelper.addRole(answer);
+            var departments = await queryHelper.getDepartment();
+            var department = await questions.whichDepartment(departments, "associate with this role");
+            await queryHelper.addRole(answer, department);
             console.log("Role added!");
             mainMenu();
             break;
