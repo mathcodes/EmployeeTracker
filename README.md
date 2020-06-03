@@ -10,6 +10,8 @@ Manage a company's database in the terminal with Node.JS and MySQL leading the w
 
 ![employee tracker gif](https://github.com/mathcodes/EmployeeTracker/blob/master/EmployeeTracker.gif?raw=true)
 
+[CLICK HERE](https://github.com/mathcodes/EmployeeTracker/blob/master/EmployeeTracker.mp4?raw=true) for the video.
+
 ## Table of Contents
 
 * [Installation](#installation)
