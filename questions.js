@@ -1,6 +1,8 @@
 var mysql = require("mysql");
 var inquirer = require('inquirer');
 const connection = require("./db/connection");
+require("console.table");
+
 
 
 // var connection = mysql.createConnection({
@@ -26,7 +28,7 @@ const connection = require("./db/connection");
 
 runSearch();
 
-function runSearch() {
+async function runSearch() {
     inquirer
         .prompt({
             type: "list",
@@ -83,6 +85,7 @@ function runSearch() {
 
                 case "Exit":
                     connection.end();
+                    console.log()
                     break;
             }
         });
