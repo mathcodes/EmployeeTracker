@@ -28,7 +28,7 @@ To install necessary dependencies, run the following command:
 
 ```
 
-npm i console.table express inquirer mysql
+npm i console.table express inquirer mysql dotenv
 
 ```
 
