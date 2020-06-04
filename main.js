@@ -156,15 +156,32 @@ async function handleUpdate(choice) {
             console.log("Manager updated!");
             mainMenu();
             break;
+        case "Delete department": // done
+            // get departments here
+            var departments = await queryHelper.getDepartment();
+            var answer = await questions.whichDepartment(departments, "delete");
+            await queryHelper.deleteDepartment(answer);
+            console.log(`Deleted!`);
+            mainMenu();
+            break;
+        case "Delete role": // done
+            // get roles here
+            var roles = await queryHelper.getRoles();
+            var answer = await questions.whichRole(roles, "delete");
+            await queryHelper.deleteRole(answer);
+            console.log(`Deleted!`);
+            mainMenu();
+            break;
+
         case "Delete employee": // done
             // get employees here
             var employees = await queryHelper.getEmployees();
             var answer = await questions.whichEmployee(employees, "delete");
-            var indEmp = await queryHelper.getIndEmployee(answer);
-            await queryHelper.deleteEmployee(indEmp);
+            await queryHelper.deleteEmployee(answer);
             console.log(`Deleted!`);
             mainMenu();
             break;
+
         case "Delete department": // done
             // get departments here
             var departments = await queryHelper.getDepartment();

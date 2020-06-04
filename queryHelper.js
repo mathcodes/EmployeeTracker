@@ -102,18 +102,25 @@ function updateRole(indEmployee, indRole) {
 }
 
 function deleteDepartment(answerDept) {
-    return connection.query("DELETE FROM department WHERE ?", { name: answerDept.name });
+    return connection.query("DELETE FROM department WHERE ?", { id: answerDept.choice.split("-")[0] });
 }
 
 function deleteRole(title) {
-    return connection.query("DELETE FROM role WHERE ?", { title: title[0].id });
+    return connection.query("DELETE FROM role WHERE ?", { id: title.choice.split("-")[0] });
 }
+
+
+
+
+// function deleteRole(title) {
+//     return connection.query("DELETE FROM role WHERE ?", { id: title[0].id });
+// }
 
 function deleteEmployee(input) {
-    return connection.query("DELETE FROM employee WHERE ?", { id: input[0].id });
-
+    return connection.query("DELETE FROM employee WHERE ?", { id: input.choice.split("-")[0] });
 }
-console.log(id);
+
+// console.log(input[0].id);
 module.exports = {
     getEverything,
     getEmployees,
