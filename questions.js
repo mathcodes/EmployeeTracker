@@ -77,8 +77,8 @@ function viewMenu() {
             "View departments",
             "View roles",
             "View an individual employee",
-            "View employees by manager",
-            "View total utilized budget of a department",
+            // "View employees by manager",
+            "View total utilized budget in order of department",
             "Back to main menu"
         ]
     }])
